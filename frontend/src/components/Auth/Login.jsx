@@ -92,7 +92,7 @@ const Login = () => {
           </form>
         </div>
         <div className="banner">
-          <img src="/login.png" alt="login" />
+          <img src="/l.jpg" alt="login" />
         </div>
       </section>
     </>

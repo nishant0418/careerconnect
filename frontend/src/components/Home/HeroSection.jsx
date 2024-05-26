@@ -35,10 +35,8 @@ const HeroSection = () => {
           <div className="title">
             <h1>Find a job that suits</h1>
             <h1>your interests and skills</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              voluptate repellat modi quidem aliquid eaque ducimus ipsa et,
-              facere mollitia!
+            <p  style={{ fontWeight: 'bold' }}>
+            Unlock top talent effortlessly with our comprehensive platform designed for both job seekers and employers. Discover the perfect match for your company's needs while providing rewarding opportunities for skilled professionals. Join us in building stronger teams and fostering career growth, all in one convenient hub.
             </p>
           </div>
           <div className="image">

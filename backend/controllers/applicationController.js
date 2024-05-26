@@ -62,23 +62,34 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   ) {
     return next(new ErrorHandler("Please fill all fields.", 400));
   }
-  const application = await Application.create({
-    name,
-    email,
-    coverLetter,
-    phone,
-    address,
-    applicantID,
-    employerID,
-    resume: {
-      public_id: cloudinaryResponse.public_id,
-      url: cloudinaryResponse.secure_url,
-    },
-  });
+  try{
+    const application = await Application.create({
+    
+      name,
+      email,
+      coverLetter,
+      phone,
+      address,
+      applicantID,
+      employerID,
+      resume: {
+        public_id: cloudinaryResponse.public_id,
+        url: cloudinaryResponse.secure_url,
+      },
+    });
+
+  }catch (error) {
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors).map(err => err.message);
+      return next(new ErrorHandler(messages.join(", "), 400));
+    }
+    // Handle other errors
+  }
+  
   res.status(200).json({
     success: true,
     message: "Application Submitted!",
-    application,
+    applicantID,
   });
 });
 
